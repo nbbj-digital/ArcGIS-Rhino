@@ -110,8 +110,12 @@ namespace ArcRhino_Module
             var symRef = createSymbol(layerType);
             var rd = new SimpleRendererDefinition(symRef, label: name, description: name);
             // TODO: create new dataconnection for Rhino with attributes as needed
+            
             var dc = MapView.Active.Map.Layers.FirstOrDefault().GetDataConnection();
-            return LayerFactory.Instance.CreateFeatureLayer(dc, MapView.Active.Map, layerName: layerType.ToString("g"), rendererDefinition: rd);
+            var feat_param = new FeatureLayerCreationParams(dc) { Name= layerType.ToString("g"), RendererDefinition= rd } ;
+            return LayerFactory.Instance.CreateLayer<FeatureLayer>(feat_param, MapView.Active.Map);
+
+           // return LayerFactory.Instance.CreateFeatureLayer(dc, MapView.Active.Map, layerName: layerType.ToString("g"), rendererDefinition: rd);
          }
          catch
          {
