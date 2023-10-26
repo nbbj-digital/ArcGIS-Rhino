@@ -9,6 +9,7 @@ using Rhino.DocObjects;
 using Rhino;
 using ArcGIS.Desktop.Framework.Threading.Tasks;
 using System.Threading.Tasks;
+using ArcGIS.Core.Internal.Geometry;
 
 namespace ArcRhino_Module
 {
